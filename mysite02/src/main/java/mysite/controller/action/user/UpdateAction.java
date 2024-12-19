@@ -1,4 +1,4 @@
-package com.poscodx.mysite.controller.action.user;
+package mysite.controller.action.user;
 
 import java.io.IOException;
 

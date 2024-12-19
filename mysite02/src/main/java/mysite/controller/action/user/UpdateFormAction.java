@@ -30,8 +30,8 @@ public class UpdateFormAction implements Action {
 		}
 		//////////////////////////////////////////////////////////
 		
-		// UserVo vo = new UserDao().findById(authUser.getId());
-		// request.setAttribute("vo", vo);
+		UserVo vo = new UserDao().findById(authUser.getId());
+		request.setAttribute("vo", vo);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/user/updateform.jsp");
 		rd.forward(request, response);
