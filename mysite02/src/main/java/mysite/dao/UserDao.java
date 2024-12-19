@@ -57,6 +57,64 @@ public class UserDao {
 		
 		return userVo;
 	}	
+
+	public UserVo findById(Long userId) {
+		UserVo result = null;
+		
+		try (
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn.prepareStatement("select id, name, email, gender from user where id = ?");
+		) {
+				
+			pstmt.setLong(1, userId);
+
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				Long id = rs.getLong(1);
+				String name = rs.getString(2);
+				String email = rs.getString(3);
+				String gender = rs.getString(4);
+				
+				result = new UserVo();
+				result.setId(id);
+				result.setName(name);
+				result.setEmail(email);
+				result.setGender(gender);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			System.out.println("Error:" + e);
+		}		
+		
+		return result;
+	}
+	
+	public int update(UserVo vo) {
+		int result = 0;
+		
+		try (
+			Connection conn = getConnection();
+			PreparedStatement pstmt1 = conn.prepareStatement("update user set name=?, gender=? where no=?");
+			PreparedStatement pstmt2 = conn.prepareStatement("update user set name=?, password=password(?), gender=? where no=?");
+		) {
+			if("".equals(vo.getPassword())) {
+				pstmt1.setString(1, vo.getName());
+				pstmt1.setString(2, vo.getGender());
+				pstmt1.setLong(3, vo.getNo());
+				result = pstmt1.executeUpdate();
+			} else {
+				pstmt2.setString(1, vo.getName());
+				pstmt2.setString(2, vo.getPassword());
+				pstmt2.setString(3, vo.getGender());
+				pstmt2.setLong(4, vo.getNo());
+				result = pstmt2.executeUpdate();
+			}
+		} catch (SQLException e) {
+			System.out.println("Error:" + e);
+		}
+		
+		return result;				
+	}
 	
 	private Connection getConnection() throws SQLException{
 		Connection conn = null;
