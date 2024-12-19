@@ -1,12 +1,13 @@
 package mysite.controller;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
+@SuppressWarnings("serial")
 public abstract class ActionServlet extends HttpServlet {
 	
 	// factoryMethod
@@ -15,9 +16,10 @@ public abstract class ActionServlet extends HttpServlet {
 	// operation
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String actionName = request.getParameter("a");
+		Optional<String> optionalActioName = Optional.ofNullable(request.getParameter("a"));
 		
-		Action action = getAction(actionName);
+		// Action action = getAction(optionalActioName.isEmpty() ? "" : optionalActioName.get());
+		Action action = getAction(optionalActioName.orElse(""));
 		action.execute(request, response);
 	}
 
