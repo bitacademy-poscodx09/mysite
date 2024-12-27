@@ -60,4 +60,34 @@ public class UserController {
 		
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value="/update", method=RequestMethod.GET)
+	public String update(HttpSession session, Model model) {
+		// Access Control
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		if(authUser == null) {
+			return "redirect:/";
+		}
+		
+		UserVo userVo = userService.getUser(authUser.getId());
+		
+		model.addAttribute("vo", userVo);
+		return "user/update";
+	}
+
+	@RequestMapping(value="/update", method=RequestMethod.POST)
+	public String update(HttpSession session, UserVo userVo) {
+		// Access Control
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		if(authUser == null) {
+			return "redirect:/";
+		}
+		
+		userVo.setId(authUser.getId());
+		userService.update(userVo);
+		
+		authUser.setName(userVo.getName());
+		return "redirect:/user/update";
+	}
+	
 }
