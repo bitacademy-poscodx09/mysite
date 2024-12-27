@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import mysite.vo.BoardVo;
+
 @Service
 public class BoardService {
 	
@@ -12,9 +14,11 @@ public class BoardService {
 	}
 	
 	public BoardVo getContents(Long id) {
+		return null;
 	}
 	
 	public BoardVo getContents(Long id, Long userId) {
+		return null;
 	}
 	
 	public void updateContents(BoardVo vo) {
@@ -23,9 +27,11 @@ public class BoardService {
 	public void deleteContents(Long id, Long userId) {
 	}
 	
-	public Map<String, Object> getContentsList(int cuurentPage, String keyword) {
+	public Map<String, Object> getContentsList(int currentPage, String keyword) {
 		List<BoardVo> list = null; 
 		
 		// view의 pagination를 위한 데이터 값 계산
+		
+		return null;
 	}
 }
