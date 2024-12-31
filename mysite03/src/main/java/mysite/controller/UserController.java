@@ -27,7 +27,12 @@ public class UserController {
 
 	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public String join(UserVo userVo) {
+		System.out.println(userVo);
+		
 		userService.join(userVo);
+
+		System.out.println(userVo);
+
 		return "redirect:/user/joinsuccess";
 	}
 
