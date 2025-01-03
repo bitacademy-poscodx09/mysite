@@ -1,9 +1,9 @@
-package com.poscodx.mysite.repository;
+package mysite.repository;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.poscodx.mysite.vo.SiteVo;
+import mysite.vo.SiteVo;
 
 @Repository
 public class SiteRepository {

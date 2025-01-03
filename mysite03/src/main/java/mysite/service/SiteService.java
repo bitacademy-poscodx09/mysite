@@ -1,9 +1,9 @@
-package com.poscodx.mysite.service;
+package mysite.service;
 
 import org.springframework.stereotype.Service;
 
-import com.poscodx.mysite.repository.SiteRepository;
-import com.poscodx.mysite.vo.SiteVo;
+import mysite.repository.SiteRepository;
+import mysite.vo.SiteVo;
 
 @Service
 public class SiteService {

@@ -1,6 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%> 
+<%@ taglib uri="jakarta.tags.core" prefix="c"%>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt"%>
+<%@ taglib uri="jakarta.tags.functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -34,12 +34,12 @@
 								<c:when test="${vo.depth > 0 }">
 									<td class="left" style="text-align:left; padding-left:${20*vo.depth }px">
 										<img src="${pageContext.request.contextPath }/assets/images/reply.png">
-										<a href="${pageContext.request.contextPath }/board/view/${vo.no }?p=${map.currentPage }&kwd=${map.keyword }">${vo.title }</a>
+										<a href="${pageContext.request.contextPath }/board/view/${vo.id }?p=${map.currentPage }&kwd=${map.keyword }">${vo.title }</a>
 									</td>
 								</c:when>
 								<c:otherwise>
 									<td class="left" style="text-align:left">
-										<a href="${pageContext.request.contextPath }/board/view/${vo.no }?p=${map.currentPage }&kwd=${map.keyword }">${vo.title }</a>
+										<a href="${pageContext.request.contextPath }/board/view/${vo.id }?p=${map.currentPage }&kwd=${map.keyword }">${vo.title }</a>
 									</td>
 								</c:otherwise>
 							</c:choose>
@@ -48,8 +48,8 @@
 							<td>${vo.regDate }</td>
 							<td>
 								<c:choose>
-									<c:when test="${not empty authUser && authUser.no == vo.userNo }">
-										<a href="${pageContext.request.contextPath }/board/delete/${vo.no }?p=${map.currentPage }&kwd=${map.keyword }" class="del" style="background-image:url(${pageContext.request.contextPath }/assets/images/recycle.png)">삭제</a>
+									<c:when test="${not empty authUser && authUser.id == vo.userId }">
+										<a href="${pageContext.request.contextPath }/board/delete/${vo.id }?p=${map.currentPage }&kwd=${map.keyword }" class="del" style="background-image:url(${pageContext.request.contextPath }/assets/images/recycle.png)">삭제</a>
 									</c:when>
 									<c:otherwise>
 										&nbsp;

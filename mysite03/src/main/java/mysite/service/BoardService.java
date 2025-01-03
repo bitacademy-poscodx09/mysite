@@ -1,4 +1,4 @@
-package com.poscodx.mysite.service;
+package mysite.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,10 +6,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.poscodx.mysite.repository.BoardRepository;
-import com.poscodx.mysite.vo.BoardVo;
+import mysite.repository.BoardRepository;
+import mysite.vo.BoardVo;
 
 @Service
 public class BoardService {
@@ -19,7 +18,6 @@ public class BoardService {
 	@Autowired
 	private BoardRepository boardRepository;
 	
-	@Transactional
 	public void addContents(BoardVo boardVo) {
 		if(boardVo.getGroupNo() != null) {
 			boardRepository.updateOrderNo(boardVo.getGroupNo(), boardVo.getOrderNo());
@@ -28,18 +26,18 @@ public class BoardService {
 		boardRepository.insert(boardVo);
 	}
 	
-	public BoardVo getContents(Long no) {
-		BoardVo boardVo = boardRepository.findByNo(no);
+	public BoardVo getContents(Long id) {
+		BoardVo boardVo = boardRepository.findById(id);
 		
 		if(boardVo != null) {
-			boardRepository.updateHit(no);
+			boardRepository.updateHit(id);
 		}
 		
 		return boardVo;
 	}
 
-	public BoardVo getContents(Long no, Long userNo) {
-		BoardVo boardVo = boardRepository.findByNoAndUserNo(no, userNo);
+	public BoardVo getContents(Long id, Long userId) {
+		BoardVo boardVo = boardRepository.findByIdAndUserId(id, userId);
 		return boardVo;
 	}
 	

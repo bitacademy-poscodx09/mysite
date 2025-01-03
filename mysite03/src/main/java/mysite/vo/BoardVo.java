@@ -1,7 +1,7 @@
-package com.poscodx.mysite.vo;
+package mysite.vo;
 
 public class BoardVo {
-	private Long no;
+	private Long Id;
 	private String title;
 	private String contents;
 	private String regDate;
@@ -9,13 +9,14 @@ public class BoardVo {
 	private Integer groupNo;
 	private Integer orderNo;
 	private Integer depth;
-	private Long userNo;
+	private Long userId;
 	private String userName;
-	public Long getNo() {
-		return no;
+
+	public Long getId() {
+		return Id;
 	}
-	public void setNo(Long no) {
-		this.no = no;
+	public void setId(Long id) {
+		Id = id;
 	}
 	public String getTitle() {
 		return title;
@@ -59,11 +60,11 @@ public class BoardVo {
 	public void setDepth(Integer depth) {
 		this.depth = depth;
 	}
-	public Long getUserNo() {
-		return userNo;
+	public Long getUserId() {
+		return userId;
 	}
-	public void setUserNo(Long userNo) {
-		this.userNo = userNo;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	public String getUserName() {
 		return userName;
@@ -71,10 +72,11 @@ public class BoardVo {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
 	@Override
 	public String toString() {
-		return "BoardVo [no=" + no + ", title=" + title + ", contents=" + contents + ", regDate=" + regDate + ", hit="
-				+ hit + ", groupNo=" + groupNo + ", orderNo=" + orderNo + ", depth=" + depth + ", userNo=" + userNo
+		return "BoardVo [Id=" + Id + ", title=" + title + ", contents=" + contents + ", regDate=" + regDate + ", hit="
+				+ hit + ", groupNo=" + groupNo + ", orderNo=" + orderNo + ", depth=" + depth + ", userId=" + userId
 				+ ", userName=" + userName + "]";
 	}
 }

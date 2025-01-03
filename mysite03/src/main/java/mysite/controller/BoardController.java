@@ -1,4 +1,4 @@
-package com.poscodx.mysite.controller;
+package mysite.controller;
 
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.poscodx.mysite.security.Auth;
-import com.poscodx.mysite.security.AuthUser;
-import com.poscodx.mysite.service.BoardService;
-import com.poscodx.mysite.vo.BoardVo;
-import com.poscodx.mysite.vo.UserVo;
-import com.poscodx.mysite.web.util.WebUtil;
+import mysite.security.Auth;
+import mysite.security.AuthUser;
+import mysite.service.BoardService;
+import mysite.vo.BoardVo;
+import mysite.vo.UserVo;
+import mysite.web.util.WebUtil;
 
 @Controller
 @RequestMapping("/board")
@@ -38,28 +38,28 @@ public class BoardController {
 		return "board/index";
 	}
 	
-	@RequestMapping("/view/{no}")
-	public String view(@PathVariable("no") Long no, Model model) {
-		BoardVo boardVo = boardService.getContents(no);
+	@RequestMapping("/view/{id}")
+	public String view(@PathVariable("id") Long id, Model model) {
+		BoardVo boardVo = boardService.getContents(id);
 		model.addAttribute("boardVo", boardVo);
 		return "board/view";
 	}
 	
 	@Auth
-	@RequestMapping("/delete/{no}")
+	@RequestMapping("/delete/{id}")
 	public String delete(
 		@AuthUser UserVo authUser,
-		@PathVariable("no") Long boardNo,
+		@PathVariable("id") Long boardId,
 		@RequestParam(value="p", required=true, defaultValue="1") Integer page,
 		@RequestParam(value="kwd", required=true, defaultValue="") String keyword) {		
-		boardService.deleteContents(boardNo, authUser.getNo());
+		boardService.deleteContents(boardId, authUser.getId());
 		return "redirect:/board?p=" + page + "&kwd=" + WebUtil.encodeURL(keyword, "UTF-8");
 	}
 	
 	@Auth
-	@RequestMapping("/modify/{no}")	
-	public String modify(@AuthUser UserVo authUser, @PathVariable("no") Long no, Model model) {
-		BoardVo boardVo = boardService.getContents(no, authUser.getNo());
+	@RequestMapping("/modify/{id}")	
+	public String modify(@AuthUser UserVo authUser, @PathVariable("id") Long id, Model model) {
+		BoardVo boardVo = boardService.getContents(id, authUser.getId());
 		model.addAttribute("boardVo", boardVo);
 		return "board/modify";
 	}
@@ -71,9 +71,9 @@ public class BoardController {
 		BoardVo boardVo,
 		@RequestParam(value="p", required=true, defaultValue="1") Integer page,
 		@RequestParam(value="kwd", required=true, defaultValue="") String keyword) {		
-		boardVo.setUserNo(authUser.getNo());
+		boardVo.setUserId(authUser.getId());
 		boardService.modifyContents(boardVo);
-		return "redirect:/board/view/" + boardVo.getNo() + 
+		return "redirect:/board/view/" + boardVo.getId() + 
 				"?p=" + page + 
 				"&kwd=" + WebUtil.encodeURL( keyword, "UTF-8" );
 	}
@@ -92,15 +92,15 @@ public class BoardController {
 		@RequestParam(value="p", required=true, defaultValue="1") Integer page,
 		@RequestParam(value="kwd", required=true, defaultValue="") String keyword) {
 
-		boardVo.setUserNo(authUser.getNo());
+		boardVo.setUserId(authUser.getId());
 		boardService.addContents(boardVo);
 		return	"redirect:/board?p=" + page + "&kwd=" + WebUtil.encodeURL(keyword, "UTF-8");
 	}
 
 	@Auth
-	@RequestMapping(value="/reply/{no}")	
-	public String reply(@PathVariable("no") Long no, Model model) {
-		BoardVo boardVo = boardService.getContents(no);
+	@RequestMapping(value="/reply/{id}")	
+	public String reply(@PathVariable("id") Long id, Model model) {
+		BoardVo boardVo = boardService.getContents(id);
 		boardVo.setOrderNo(boardVo.getOrderNo() + 1);
 		boardVo.setDepth(boardVo.getDepth() + 1);
 		

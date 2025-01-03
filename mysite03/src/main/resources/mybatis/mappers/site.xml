@@ -6,19 +6,32 @@
 		<![CDATA[
 		  select title, welcome, profile, description
 			from site
-		order by no asc
+		order by id asc
 		   limit 0, 1
 		]]>
 	</select>
 	
 	<update id="update" parameterType="sitevo">
-		<![CDATA[
-		update site
-	   	   set title = #{title },
-		       welcome = #{welcome },
-			   profile = #{profile },
-			   description = #{description }
-	     where no = 1       	
-		]]>
+		<choose>
+			<when test="profile == null">
+				<![CDATA[
+				update site
+			   	   set title = #{title },
+				       welcome = #{welcome },
+					   description = #{description }
+			     where id = 1       	
+				]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+				update site
+			   	   set title = #{title },
+				       welcome = #{welcome },
+					   profile = #{profile },
+					   description = #{description }
+			     where id = 1       	
+				]]>
+			</otherwise>
+		</choose>
 	</update>
 </mapper>
