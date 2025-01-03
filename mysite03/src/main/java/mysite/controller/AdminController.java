@@ -30,17 +30,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/main/update")
-	public String update(
-		@RequestParam("title") String title,
-		@RequestParam("welcome") String welcome,
-		@RequestParam("description") String description,
-		@RequestParam("file") MultipartFile multipartFile) {
-		
-		SiteVo siteVo = new SiteVo();
-		siteVo.setTitle(title);
-		siteVo.setWelcome(welcome);
-		siteVo.setDescription(description);
-		
+	public String update(SiteVo siteVo, @RequestParam("file") MultipartFile multipartFile) {
 		String profile = fileUploadService.restore(multipartFile);
 		if(profile != null) {
 			siteVo.setProfile(profile);
