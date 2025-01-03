@@ -22,6 +22,9 @@
 	<!-- DefaultServlet Handler -->	
 	<mvc:default-servlet-handler />
 	
+	<!-- mvc url-resource mapping -->
+	<mvc:resources mapping="/assets/upload-images/**" location="file:/mysite-uploads" />
+	
 	<!-- Interceptors -->
 	<mvc:interceptors>
 		<mvc:interceptor>
