@@ -30,7 +30,7 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
-
+	
 	<context:annotation-config />
 	<context:component-scan
 		base-package="mysite.service, mysite.repository">
