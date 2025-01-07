@@ -39,7 +39,8 @@
 						<label>서비스 약관에 동의합니다.</label>
 					</fieldset>
 					
-					<input type="submit" value="가입하기">		
+					<spring:message code="user.join.button.signup" var="userSignupButtonText" /> 
+					<input type="submit" value="${userSignupButtonText }">		
 				</form>
 			</div>
 		</div>
