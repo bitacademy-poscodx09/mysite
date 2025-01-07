@@ -24,16 +24,16 @@
 					method="post"
 					action="${pageContext.request.contextPath}/user/join">
 					
-					<label class="block-label" for="name">이름</label>
+					<label class="block-label" for="name"><spring:message code="user.join.label.name" /></label>
 					<form:input path="name" />
 					<p style="color:#f00; text-align:left; padding:0">
 						<form:errors path="name" />
 					</p>
 					
-					
-					<label class="block-label" for="email">이메일</label>
+					<spring:message code="user.join.label.email.check" var="userJoinLabelEmailCheck" />
+					<label class="block-label" for="email"><spring:message code="user.join.label.email" /></label>
 					<form:input path="email" />
-					<input id="btn-check" type="button" value="이메일확인">
+					<input id="btn-check" type="button" value="${userJoinLabelEmailCheck }">
 					<img id="img-check" src="${pageContext.request.contextPath}/assets/images/check.png" style="vertical-align:bottom; width:24px; display: none">
 					<p style="color:#f00; text-align:left; padding:0">
 						<form:errors path="email" />
@@ -44,20 +44,23 @@
 					<p style="color:#f00; text-align:left; padding:0">
 						<form:errors path="password" />
 					</p>					
-					
+
+					<spring:message code="user.join.label.gender.male" var="userJoinLabelGenderMale"/>
+					<spring:message code="user.join.label.gender.female" var="userJoinLabelGenderFemale"/>
 					<fieldset>
-						<legend>성별</legend>
-						<form:radiobutton path="gender" value="female" label="여" checked="checked" />
-						<form:radiobutton path="gender" value="male" label="남"/>
+						<legend><spring:message code="user.join.label.gender" /></legend>
+						<form:radiobutton path="gender" value="female" label="${userJoinLabelGenderFemale }" checked="checked" />
+						<form:radiobutton path="gender" value="male" label="${userJoinLabelGenderMale }"/>
 					</fieldset>
 					
 					<fieldset>
-						<legend>약관동의</legend>
+						<legend><spring:message code="user.join.label.terms" /></legend>
 						<input id="agree-prov" type="checkbox" name="agreeProv" value="y">
-						<label>서비스 약관에 동의합니다.</label>
+						<label><spring:message code="user.join.label.terms.message" /></label>
 					</fieldset>
 					
-					<input type="submit" value="가입하기">		
+					<spring:message code="user.join.button.signup" var="userJoinButtonSignup"/>
+					<input type="submit" value="${userJoinButtonSignup }">		
 				</form:form>
 			</div>
 		</div>
