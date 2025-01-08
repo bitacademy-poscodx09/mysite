@@ -16,6 +16,10 @@ public class GuestbookRepository {
 		this.sqlSession = sqlSession;
 	}
 	
+	public GuestbookVo findById(Long id) {
+		return sqlSession.selectOne("guestbook.findById", id);
+	}	
+
 	public List<GuestbookVo> findAll() {
 		return sqlSession.selectList("guestbook.findAll");
 	}
@@ -26,5 +30,6 @@ public class GuestbookRepository {
 
 	public int deleteByIdAndPassword(Long id, String password) {
 		return sqlSession.delete("guestbook.deleteByIdAndPassword", Map.of("id", id, "password", password));
-	}	
+	}
+
 }
