@@ -33,7 +33,7 @@
 					<spring:message code="user.join.label.email.check" var="userJoinLabelEmailCheck" />
 					<label class="block-label" for="email"><spring:message code="user.join.label.email" /></label>
 					<form:input path="email" />
-					<input id="btn-check" type="button" value="${userJoinLabelEmailCheck }">
+					<input id="btn-check" type="button" value="${userJoinLabelEmailCheck }" style="display:;">
 					<img id="img-check" src="${pageContext.request.contextPath}/assets/images/check.png" style="vertical-align:bottom; width:24px; display: none">
 					<p style="color:#f00; text-align:left; padding:0">
 						<form:errors path="email" />
