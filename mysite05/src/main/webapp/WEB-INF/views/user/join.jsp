@@ -20,7 +20,7 @@ $(function(){
 		}
 		
 		$.ajax({
-			url: "${pageContext.request.contextPath}/api/user/checkemail?email=" + email,
+			url: "${pageContext.request.contextPath}/api2222/user/checkemail?email=" + email,
 			type: "get",
 			dataType: "json",
 			success: function(response) {
