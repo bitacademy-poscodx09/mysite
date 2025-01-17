@@ -1,14 +1,14 @@
 --- Spring Security 적용하기
 
 1. Dependency 추가
-1) spring-security-web
-2) spring-security-config
-3) spring-secuirty-taglibs
+	1) spring-security-web
+	2) spring-security-config
+	3) spring-secuirty-taglibs
 
 
 2. Spring Security 보안 설정(기본)
-1) SecurtyConfig 작성
-2) DeletegatingFilterProxy 설정
+	1) SecurtyConfig 작성
+	2) DeletegatingFilterProxy 설정
 
 3. security Config 설정1 - 작동유무
 1) FormLoginConfigurer 설정
