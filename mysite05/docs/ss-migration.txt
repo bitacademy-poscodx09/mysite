@@ -35,9 +35,9 @@
 	
 5. 로그아웃 처리
 	1) Logout Configurer 설정
-    http.logout()
-2) .logoutUrl("/user/logout")
-3) .logoutSuccessUrl("/")
+    	http.logout()
+	2) .logoutUrl("/user/logout")
+	3) .logoutSuccessUrl("/")
 
 6. Authority 처리
    UserDetailsImpl.getAuthoruty() 오버라이딩
