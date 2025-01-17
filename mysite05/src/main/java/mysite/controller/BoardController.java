@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import mysite.security.Auth;
 import mysite.service.BoardService;
 import mysite.vo.BoardVo;
 import mysite.vo.UserVo;
@@ -46,7 +45,6 @@ public class BoardController {
 		return "board/view";
 	}
 	
-	@Auth
 	@RequestMapping("/delete/{id}")
 	public String delete(
 		Authentication authentication,
@@ -58,7 +56,6 @@ public class BoardController {
 		return "redirect:/board?p=" + page + "&kwd=" + WebUtil.encodeURL(keyword, "UTF-8");
 	}
 	
-	@Auth
 	@RequestMapping("/modify/{id}")	
 	public String modify(Authentication authentication, @PathVariable("id") Long id, Model model) {
 		UserVo authUser = (UserVo)authentication.getPrincipal();
@@ -67,7 +64,6 @@ public class BoardController {
 		return "board/modify";
 	}
 
-	@Auth
 	@RequestMapping(value="/modify", method=RequestMethod.POST)	
 	public String modify(
 		Authentication authentication, 
@@ -82,13 +78,11 @@ public class BoardController {
 				"&kwd=" + WebUtil.encodeURL( keyword, "UTF-8" );
 	}
 
-	@Auth
 	@RequestMapping(value="/write", method=RequestMethod.GET)	
 	public String write() {
 		return "board/write";
 	}
 
-	@Auth
 	@RequestMapping(value="/write", method=RequestMethod.POST)	
 	public String write(
 		Authentication authentication,
@@ -101,7 +95,6 @@ public class BoardController {
 		return	"redirect:/board?p=" + page + "&kwd=" + WebUtil.encodeURL(keyword, "UTF-8");
 	}
 
-	@Auth
 	@RequestMapping(value="/reply/{id}")	
 	public String reply(@PathVariable("id") Long id, Model model) {
 		BoardVo boardVo = boardService.getContents(id);
