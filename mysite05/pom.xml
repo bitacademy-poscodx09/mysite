@@ -54,7 +54,7 @@
             <version>${org.springsecurity-version}</version>
         </dependency>
 
-        <!-- spring security config -->
+        <!-- spring security taglibs -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
