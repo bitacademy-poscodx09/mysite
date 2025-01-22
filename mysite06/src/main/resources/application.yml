@@ -19,10 +19,21 @@ spring:
       proxy-target-class: true
 
    # mvc
-   # mvc:
+   mvc:
+      static-path-pattern: /assets/**		
    #   view:
    #      prefix: /WEB-INF/views/
    #      suffix: .jsp
+   web:
+      resources:
+         static-locations: [classpath:assets/, file:/mysite-uploads/]
+
+   servlet:
+      multipart:
+         enabled: true
+         max-file-size: 10485760
+         max-request-size: 104857600
+         file-size-threshold: 5242880
 
    # message resources(i18n)
    messages:
@@ -46,4 +57,8 @@ mybatis:
 server:
    port: 8080
    servlet:
-      context-path: /mysite06	  
+      context-path: /mysite06  	  
+
+# logging
+logging:
+   config: classpath:logback.xml  	

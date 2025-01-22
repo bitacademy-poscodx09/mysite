@@ -2,8 +2,8 @@ package mysite.config;
 
 import java.io.IOException;
 
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
@@ -27,7 +27,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import mysite.repository.UserRepository;
 import mysite.security.UserDetailsServiceImpl;
 
-@Configuration
+@SpringBootConfiguration
 @EnableWebSecurity
 public class SecurityConfig {
     @Bean
