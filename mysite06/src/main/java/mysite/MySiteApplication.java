@@ -8,7 +8,6 @@ import mysite.config.AppConfig;
 import mysite.config.WebConfig;
 
 @SpringBootApplication
-@Import({AppConfig.class, WebConfig.class})
 public class MySiteApplication {
 	
 	public static void main(String[] args) {
