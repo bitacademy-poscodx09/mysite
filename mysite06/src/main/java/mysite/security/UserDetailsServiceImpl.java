@@ -3,9 +3,7 @@ package mysite.security;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
 import mysite.repository.UserRepository;
-import mysite.vo.UserVo;
 
 public class UserDetailsServiceImpl implements UserDetailsService {
 	private final UserRepository userRepository;

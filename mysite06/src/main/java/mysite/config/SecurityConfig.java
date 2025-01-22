@@ -81,9 +81,10 @@ public class SecurityConfig {
         			
         			.anyRequest()
         			.permitAll();
-        	})
+        	});
+        	/*
         	.exceptionHandling(exceptionHandling -> {
-        		// exceptionHandling.accessDeniedPage("/WEB-INF/views/errors/403.jsp");
+        		// exceptionHandling.accessDeniedPage("/error/403");
         		exceptionHandling.accessDeniedHandler(new AccessDeniedHandler() {
 					@Override
 					public void handle(
@@ -94,7 +95,7 @@ public class SecurityConfig {
 					}
         		});
         	});
-        
+        	*/
     	return http.build();
     }
     

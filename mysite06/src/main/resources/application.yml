@@ -58,6 +58,10 @@ server:
    port: 8080
    servlet:
       context-path: /mysite06  	  
+   error:
+      whitelabel:
+         enabled: false
+      path: /error         			
 
 # logging
 logging:
