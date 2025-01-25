@@ -1,9 +1,8 @@
 package mysite.repository;
 
+import mysite.vo.SiteVo;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-
-import mysite.vo.SiteVo;
 
 @Repository
 public class SiteRepository {

@@ -11,14 +11,14 @@
 	</appender>
 	
 	<appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/mysite-log/exception.log</file>
+		<file>/Users/kickscar/mysite-log/exception.log</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>
 				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n
 			</Pattern>
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<FileNamePattern>/mysite-log/exception.%i.log.zip</FileNamePattern>
+			<FileNamePattern>/Users/kickscar/mysite-log/exception.%i.log.zip</FileNamePattern>
 			<MinIndex>1</MinIndex>
 			<MaxIndex>10</MaxIndex>
 		</rollingPolicy>

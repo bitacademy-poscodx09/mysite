@@ -1,20 +1,20 @@
 package mysite.repository;
 
+import mysite.vo.BoardVo;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import mysite.vo.BoardVo;
-
 @Repository
 public class BoardRepository {
+    private final SqlSession sqlSession;
 
-    @Autowired
-    private SqlSession sqlSession;
+    public BoardRepository(SqlSession sqlSession) {
+        this.sqlSession = sqlSession;
+    }
 
     public int insert(BoardVo boardVo) {
         return sqlSession.insert("board.insert", boardVo);

@@ -1,13 +1,12 @@
 package mysite.interceptor;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.LocaleResolver;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import mysite.service.SiteService;
 import mysite.vo.SiteVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.LocaleResolver;
 
 public class SiteInterceptor implements HandlerInterceptor {
 	@Autowired

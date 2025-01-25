@@ -1,13 +1,12 @@
 package mysite.service;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import mysite.repository.GuestbookLogRepository;
 import mysite.repository.GuestbookRepository;
 import mysite.vo.GuestbookVo;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class GuestbookService {

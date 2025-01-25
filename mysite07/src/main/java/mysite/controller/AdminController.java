@@ -1,5 +1,9 @@
 package mysite.controller;
 
+import jakarta.servlet.ServletContext;
+import mysite.service.FileUploadService;
+import mysite.service.SiteService;
+import mysite.vo.SiteVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -7,11 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-import jakarta.servlet.ServletContext;
-import mysite.service.FileUploadService;
-import mysite.service.SiteService;
-import mysite.vo.SiteVo;
 
 @Controller
 @RequestMapping("/admin")
@@ -33,9 +32,9 @@ public class AdminController {
 	}
 	
 	@RequestMapping({"", "/main"})
-	public String main(Model model) {
+	public String index(Model model) {
 		model.addAttribute("siteVo", siteService.getSite());
-		return "admin/main";
+		return "admin/index";
 	}
 	
 	@RequestMapping("/main/update")
@@ -66,7 +65,6 @@ public class AdminController {
 	public String board() {
 		return "admin/board";
 	}
-
 
 	@RequestMapping("/user")
 	public String user() {

@@ -1,12 +1,11 @@
 package mysite.repository;
 
-import java.util.List;
-import java.util.Map;
-
+import mysite.vo.GuestbookVo;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import mysite.vo.GuestbookVo;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public class GuestbookRepository {

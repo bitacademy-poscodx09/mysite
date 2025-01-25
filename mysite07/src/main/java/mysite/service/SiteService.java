@@ -1,9 +1,8 @@
 package mysite.service;
 
-import org.springframework.stereotype.Service;
-
 import mysite.repository.SiteRepository;
 import mysite.vo.SiteVo;
+import org.springframework.stereotype.Service;
 
 @Service
 public class SiteService {

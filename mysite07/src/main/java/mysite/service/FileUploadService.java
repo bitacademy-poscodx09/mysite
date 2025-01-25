@@ -1,27 +1,28 @@
 package mysite.service;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Calendar;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Calendar;
+import java.util.Objects;
+import java.util.Optional;
+
 @Service
-@PropertySource("classpath:config/fileupload.properties")
+@PropertySource("classpath:fileupload.properties")
 public class FileUploadService {
 	@Autowired
 	private Environment env;
 	
 	public String restore(MultipartFile file) throws RuntimeException {
 		try {
-			File uploadDirectory = new File(env.getProperty("fileupload.uploadLocation"));
+			File uploadDirectory = new File(Objects.requireNonNull(env.getProperty("fileupload.uploadLocation")));
 			if(!uploadDirectory.exists() && !uploadDirectory.mkdirs()) {
 				return null; 
 			}

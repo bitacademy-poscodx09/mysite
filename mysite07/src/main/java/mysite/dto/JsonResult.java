@@ -4,9 +4,9 @@ import lombok.Getter;
 
 @Getter
 public class JsonResult {
-	private String result;	// "success"  or "fail"
-	private Object data;	// if success, set
-	private String message;	// if fail, set
+	private final String result;	// "success"  or "fail"
+	private final Object data;		// if success, set
+	private final String message;	// if fail, set
 
 	public static JsonResult success(Object data) {
 		return new JsonResult(data);

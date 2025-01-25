@@ -1,16 +1,24 @@
 package mysite.controller;
 
+import com.sun.tools.javac.Main;
+import jakarta.servlet.ServletContext;
+import mysite.vo.UserVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import mysite.vo.UserVo;
-
 @Controller
 public class MainController {
+	private final ServletContext servletContext;
+
+	public MainController(ServletContext servletContext) {
+		this.servletContext = servletContext;
+	}
+
 	@RequestMapping({"/", "/main"})
-	public String main(Model model) {
+	public String index(Model model) {
+		model.addAttribute("servletContext", servletContext);
 		return "main/index";
 	}
 	

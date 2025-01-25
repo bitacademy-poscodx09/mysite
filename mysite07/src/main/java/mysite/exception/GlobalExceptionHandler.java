@@ -1,30 +1,26 @@
 package mysite.exception;
 
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
+import mysite.dto.JsonResult;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.slf4j.Slf4j;
-import mysite.dto.JsonResult;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 
 @Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
 	@ExceptionHandler(Exception.class)
-	public void handler(
-		HttpServletRequest request,
-		HttpServletResponse response,
-		Exception e) throws Exception {
-		
+	public void handler(HttpServletRequest request, HttpServletResponse response, Exception e) throws Exception {
 		//1. 로깅(logging)
 		StringWriter errors = new StringWriter();
 		e.printStackTrace(new PrintWriter(errors));
@@ -42,8 +38,9 @@ public class GlobalExceptionHandler {
 			
 			response.setStatus(HttpServletResponse.SC_OK);
 			response.setContentType("application/json; charset=utf-8");
+
 			OutputStream os = response.getOutputStream();
-			os.write(jsonString.getBytes("utf-8"));
+			os.write(jsonString.getBytes(StandardCharsets.UTF_8));
 			os.close();
 			
 			return;

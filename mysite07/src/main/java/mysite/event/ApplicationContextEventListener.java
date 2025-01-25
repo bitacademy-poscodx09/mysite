@@ -1,5 +1,8 @@
 package mysite.event;
 
+import lombok.extern.slf4j.Slf4j;
+import mysite.service.SiteService;
+import mysite.vo.SiteVo;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -7,9 +10,6 @@ import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
-import lombok.extern.slf4j.Slf4j;
-import mysite.service.SiteService;
-import mysite.vo.SiteVo;
 
 @Slf4j
 public class ApplicationContextEventListener {
@@ -18,7 +18,7 @@ public class ApplicationContextEventListener {
 	
 	@EventListener({ContextRefreshedEvent.class})
 	public void handlerContextRefreshedEvent() {
-		log.info("-- Context Refreshed Event Received --");
+		log.info("Context Refreshed Event Received");
 		
 		SiteService siteService = applicationContext.getBean(SiteService.class);
 		SiteVo vo = siteService.getSite();
